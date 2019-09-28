@@ -32,13 +32,33 @@ def get_max_window(arr:list, w:int):
             ret.append(arr[index])
     return ret
 
+
+def max_in_windows(num, size):
+    # write code here
+    if not num or len(num) < size or size < 1:
+        return []
+    qmax = []
+    ret = []
+    for i in range(len(num)):
+        while qmax and num[qmax[-1]] <= num[i]:
+            qmax.pop()
+        qmax.append(i)
+        if i >= size - 1:
+            while qmax[0] < i - size + 1:
+                qmax.pop(0)
+            ret.append(num[qmax[0]])
+    return ret
+
+
 if __name__ == '__main__':
     test = []
     for i in range(10):
         test.append(random.randint(0,100))
     print(test)
     print('----after get max window----')
-    print(get_max_window(test,4))
+    print(get_max_window(test,3))
+    print('----after test func----')
+    print(max_in_windows(test,3))
 
 
 
