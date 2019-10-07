@@ -68,8 +68,6 @@ def is_palindrome_2(head):
     return True
 
 
-
-
 if __name__ == '__main__':
     head = make_list_palindrome()
     print(is_palindrome_1(head))
